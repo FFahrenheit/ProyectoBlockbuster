@@ -137,6 +137,14 @@ public class Buscar extends javax.swing.JFrame {
 
     private void buttonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonComprarActionPerformed
         if (seleccionado != null) {
+            if(bd.getStock(seleccionado)<=0)
+            {
+                JOptionPane.showMessageDialog(this,
+                    "No hay stock suficiente",
+                    "Lo sentimos",
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             if(!bd.isMember(bd.usuario.getId()))
             {
             JOptionPane.showMessageDialog(this,
@@ -171,6 +179,7 @@ public class Buscar extends javax.swing.JFrame {
                     fw.close();
                     JOptionPane.showMessageDialog(this,
                             "Pelicula comprada");
+                    bd.lessStock(seleccionado);
                 } catch (IOException ex) {
                     Logger.getLogger(Buscar.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
@@ -196,11 +205,18 @@ public class Buscar extends javax.swing.JFrame {
 
     private void buttonRentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRentarActionPerformed
         if (seleccionado != null) {
+            if(bd.getStock(seleccionado)<=0)
+            {
+                JOptionPane.showMessageDialog(this,
+                    "No hay stock suficiente",
+                    "Lo sentimos",
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             int input = JOptionPane.showConfirmDialog(null, "Desea rentar esta pelicula?");
             System.out.println("" + input);
             if(input==0)
             {
-                
                 FileWriter fw = null;
                 try {
                     Date today = new Date(); // Fri Jun 17 14:54:28 PDT 2016 
@@ -222,6 +238,7 @@ public class Buscar extends javax.swing.JFrame {
                     fw.close();
                     JOptionPane.showMessageDialog(this,
                             "Pelicula rentada");
+                    bd.lessStock(seleccionado);
                 } catch (IOException ex) {
                     Logger.getLogger(Buscar.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
@@ -232,7 +249,7 @@ public class Buscar extends javax.swing.JFrame {
                     }
                 }
             }
-        } else {
+        }else {
             JOptionPane.showMessageDialog(this,
                     "Seleccione una pelicula",
                     "Error",

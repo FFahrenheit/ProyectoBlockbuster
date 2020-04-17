@@ -202,4 +202,30 @@ public class BD {
         }
         return false;
     }
+    
+    public int getStock(int id)
+    {
+        for (int i = 0; i < peliculas.size(); i++) 
+        {
+            if(peliculas.get(i).getId()==id)
+            {
+                return peliculas.get(i).getStock();
+            }
+        }
+        return 0;
+    }
+    
+    public boolean lessStock(int id)
+    {
+        for (int i = 0; i < peliculas.size(); i++) 
+        {   
+            if(peliculas.get(i).getId()==id)
+            {
+                peliculas.get(i).stock--;
+                this.GuardarPeliculas();
+                return true;
+            }
+        }
+        return false;
+    }
 }

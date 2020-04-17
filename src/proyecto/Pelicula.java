@@ -14,7 +14,7 @@ public class Pelicula {
     private String genero;
     private String clasificacion;
     private int precio;
-    private int stock;
+    public int stock;
 
     public Pelicula() {
     }

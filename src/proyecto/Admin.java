@@ -89,7 +89,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_borrarCerrarSesionActionPerformed
 
     private void editarAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarAdminButtonActionPerformed
-        ListaEditar ventana = new ListaEditar();
+        Editar ventana = new Editar(bd);
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_editarAdminButtonActionPerformed

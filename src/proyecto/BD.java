@@ -96,7 +96,7 @@ public class BD {
         }
     }
      
-        private void LeerSocios(){
+        public void LeerSocios(){
         try {
             String linea;
             BufferedReader lector = new BufferedReader(new FileReader("Socios.txt"));
@@ -137,7 +137,7 @@ public class BD {
             }
     }
         
-    private void GuardarPeliculas(){
+    public void GuardarPeliculas(){
             try {
                 File datos = new File("Peliculas.txt");
                 FileWriter fw = new FileWriter(datos, false);
@@ -227,5 +227,16 @@ public class BD {
             }
         }
         return false;
+    }
+    
+    public Pelicula getPelicula(int id)
+    {
+        for (int i = 0; i < peliculas.size(); i++) {
+            if(peliculas.get(i).getId()==id)
+            {
+                return peliculas.get(i);
+            }
+        }
+        return null;
     }
 }

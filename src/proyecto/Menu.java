@@ -20,6 +20,7 @@ public class Menu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         int usuario = bd.usuario.getId();
         System.out.println(""+usuario);
+        bd.LeerSocios();
         bd.socios.forEach(s->{
             System.out.println(""+s.getId_socio());
                 if(bd.usuario.getId()==s.getId_socio())

@@ -117,7 +117,7 @@ public class Editar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonRegresarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRegresarBuscarActionPerformed
-        Menu ventana = new Menu(bd);
+        Admin ventana = new Admin(bd);
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ButtonRegresarBuscarActionPerformed
@@ -133,56 +133,9 @@ public class Editar extends javax.swing.JFrame {
 
     private void buttonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonComprarActionPerformed
         if (seleccionado != null) {
-            if (bd.getStock(seleccionado) <= 0) {
-                JOptionPane.showMessageDialog(this,
-                        "No hay stock suficiente",
-                        "Lo sentimos",
-                        JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            if (!bd.isMember(bd.usuario.getId())) {
-                JOptionPane.showMessageDialog(this,
-                        "Tiene que ser miembro para comprar peliculas",
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            int input = JOptionPane.showConfirmDialog(null, "Desea comprar esta pelicula?");
-            System.out.println("" + input);
-            if (input == 0) {
-
-                FileWriter fw = null;
-                try {
-                    Date today = new Date(); // Fri Jun 17 14:54:28 PDT 2016 
-                    Calendar cal = Calendar.getInstance();
-                    cal.setTime(today); // don't forget this if date is arbitrary e.g. 01-01-2014 
-                    Integer day = cal.get(Calendar.DAY_OF_MONTH); // 17 
-                    Integer month = cal.get(Calendar.MONTH) + 1; // 5 
-                    Integer year = cal.get(Calendar.YEAR); // 2016
-
-                    boolean res = false;
-                    File datos = new File("Compradas.txt");
-                    fw = new FileWriter(datos, true);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    String cad = bd.usuario.getId() + "#" + seleccionado.toString() + "#" + day.toString() + "#" + month.toString() + "#" + year.toString();
-                    bw.write(cad);
-                    bw.newLine();
-                    res = true;
-                    bw.close();
-                    fw.close();
-                    JOptionPane.showMessageDialog(this,
-                            "Pelicula comprada");
-                    bd.lessStock(seleccionado);
-                } catch (IOException ex) {
-                    Logger.getLogger(Editar.class.getName()).log(Level.SEVERE, null, ex);
-                } finally {
-                    try {
-                        fw.close();
-                    } catch (IOException ex) {
-                        Logger.getLogger(Editar.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
+            EditarPelicula ventana = new EditarPelicula(bd, bd.getPelicula(seleccionado));
+            ventana.setVisible(true);
+            this.disable();
         } else {
             JOptionPane.showMessageDialog(this,
                     "Seleccione una pelicula",

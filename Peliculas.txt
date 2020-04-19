@@ -1,8 +1,8 @@
-0#Hola#Hola#Hola#AA#1#1
-1#Adios#HA#HA#AA#10#10
+0#Hola#Hola#Hola#AA#1#2
+1#Adios#HA#HA#AA#10#9
 2#Bye#Bye#Bye#AA#100#1000
 3#Test#yes#yes#AA#10#10
 4#Hola#Hola#Hola#AA#100#2090
 5#AA#AA#AA#A#10#10
-6#11#11#11#B#10#10
-7#DX#XDDX#DX#D#100#100
+6#11#11#11#B#10#11
+7#DX#XDDX#DX#D#100#103

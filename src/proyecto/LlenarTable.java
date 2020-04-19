@@ -58,6 +58,7 @@ public class LlenarTable {
     public DefaultTableModel listaPeliculasRentadas(BD bd) {
 
         Vector cabeceras = new Vector();
+        cabeceras.addElement("ID");
         cabeceras.addElement("Titulo");
         cabeceras.addElement("Director");
         cabeceras.addElement("Genero");
@@ -83,6 +84,7 @@ public class LlenarTable {
                     System.out.println(r[1]);
                     String[] m = bd.getMovieData(Integer.parseInt(r[1]));
                     Vector x = new Vector();
+                    x.addElement(r[1]);
                     for (int i = 0; i < 5; i++) {
                         x.addElement(m[i].toString());
                     }

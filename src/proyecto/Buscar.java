@@ -196,8 +196,6 @@ public class Buscar extends javax.swing.JFrame {
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-
-
     }//GEN-LAST:event_buttonComprarActionPerformed
 
     private void txtPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPeliculaActionPerformed
